@@ -36,6 +36,7 @@ namespace HomeExercises
 			new Person("Vasili III of Russia", 28, 170, 60, null));
 
 			// Какие недостатки у такого подхода? 
+            // Вот такие: TEST
 			Assert.True(AreEqual(actualTsar, expectedTsar));
 
 		}
