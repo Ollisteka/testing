@@ -15,23 +15,9 @@ namespace HomeExercises
 			var expectedTsar = new Person("Ivan IV The Terrible", 54, 170, 70,
 				new Person("Vasili III of Russia", 28, 170, 60, null));
 
-            // Перепишите код на использование Fluent Assertions.
-
-            #region BeforeRefactor
-            //			Assert.AreEqual(actualTsar.Name, expectedTsar.Name);
-            //			Assert.AreEqual(actualTsar.Age, expectedTsar.Age);
-            //			Assert.AreEqual(actualTsar.Height, expectedTsar.Height);
-            //			Assert.AreEqual(actualTsar.Weight, expectedTsar.Weight);
-            //
-            //			Assert.AreEqual(expectedTsar.Parent.Name, actualTsar.Parent.Name);
-            //			Assert.AreEqual(expectedTsar.Parent.Age, actualTsar.Parent.Age);
-            //			Assert.AreEqual(expectedTsar.Parent.Height, actualTsar.Parent.Height);
-            //			Assert.AreEqual(expectedTsar.Parent.Parent, actualTsar.Parent.Parent);
-		    #endregion
-
-            expectedTsar.ShouldBeEquivalentTo(actualTsar, 
-                options => options.Excluding(o => o.SelectedMemberPath.Contains("Id")));
-        }
+			expectedTsar.ShouldBeEquivalentTo(actualTsar, 
+				options => options.Excluding(o => o.SelectedMemberPath.Contains("Id")));
+		}
 
 		[Test]
 		[Description("Альтернативное решение. Какие у него недостатки?")]
@@ -41,17 +27,17 @@ namespace HomeExercises
 			var expectedTsar = new Person("Ivan IV The Terrible", 54, 170, 70,
 			new Person("Vasili III of Russia", 28, 170, 60, null));
 
-            // Какие недостатки у такого подхода? 
-            /*
-             
-             1) Есть возможность уйти в рекурсию слишком глубоко и словить исключение. 
-             2) При появлении новых свойств, которые мы также хотим учитывать при сравнении, необходимо дописывать новое условие.
-             3) Всегда есть вероятность, что мы что-то забыли дописать.
-             4) Немного непонятный синтаксис, хочется сразу писать Assert.Equals, раз уж мы сравниваем на равенство, а не Assert.True
-             5) Мы не сможем узнать, где именно не сошлись данные, если возникнет ошибка.
-             
-            */
-            Assert.True(AreEqual(actualTsar, expectedTsar));
+			// Какие недостатки у такого подхода? 
+			/*
+			 
+			 1) Есть возможность уйти в рекурсию слишком глубоко и словить исключение. 
+			 2) При появлении новых свойств, которые мы также хотим учитывать при сравнении, необходимо дописывать новое условие.
+			 3) Всегда есть вероятность, что мы что-то забыли дописать.
+			 4) Немного непонятный синтаксис, хочется сразу писать Assert.Equals, раз уж мы сравниваем на равенство, а не Assert.True
+			 5) Мы не сможем узнать, где именно не сошлись данные, если возникнет ошибка.
+			 
+			*/
+			Assert.True(AreEqual(actualTsar, expectedTsar));
 
 		}
 
