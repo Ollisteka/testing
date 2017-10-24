@@ -1,0 +1,93 @@
+From cc38b89f6db24abb264f038079803aa130543fcb Mon Sep 17 00:00:00 2001
+From: t_kirill <t_kirill@skbkontur.ru>
+Date: Tue, 24 Oct 2017 22:03:17 +0500
+Subject: [PATCH] =?UTF-8?q?=D0=97=D0=B0=D1=84=D0=B8=D0=BA=D1=81=D0=B8?=
+ =?UTF-8?q?=D1=80=D0=BE=D0=B2=D0=B0=D0=BB=20=D1=82=D0=B0=D0=B1=D1=8B=20?=
+ =?UTF-8?q?=D0=B2=20code=20style.?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+По-умолчанию используются пробелы и у студентов часто срабатывает реформат.  Из-за этого сложно ревьюить домашку.
+---
+ HomeExercises/ObjectComparison.cs | 15 +++++++--------
+ HomeExercises/packages.config     |  7 ++++---
+ testing.sln.DotSettings           | 10 ++++++++++
+ 3 files changed, 21 insertions(+), 11 deletions(-)
+
+diff --git a/HomeExercises/ObjectComparison.cs b/HomeExercises/ObjectComparison.cs
+index 92bef81..6635b51 100644
+--- a/HomeExercises/ObjectComparison.cs
++++ b/HomeExercises/ObjectComparison.cs
+@@ -33,11 +33,10 @@ public void CheckCurrentTsar_WithCustomEquality()
+ 		{
+ 			var actualTsar = TsarRegistry.GetCurrentTsar();
+ 			var expectedTsar = new Person("Ivan IV The Terrible", 54, 170, 70,
+-			new Person("Vasili III of Russia", 28, 170, 60, null));
++				new Person("Vasili III of Russia", 28, 170, 60, null));
+ 
+ 			// Какие недостатки у такого подхода? 
+ 			Assert.True(AreEqual(actualTsar, expectedTsar));
+-
+ 		}
+ 
+ 		private bool AreEqual(Person actual, Person expected)
+@@ -45,11 +44,11 @@ private bool AreEqual(Person actual, Person expected)
+ 			if (actual == expected) return true;
+ 			if (actual == null || expected == null) return false;
+ 			return
+-			actual.Name == expected.Name
+-			&& actual.Age == expected.Age
+-			&& actual.Height == expected.Height
+-			&& actual.Weight == expected.Weight
+-			&& AreEqual(actual.Parent, expected.Parent);
++				actual.Name == expected.Name
++				&& actual.Age == expected.Age
++				&& actual.Height == expected.Height
++				&& actual.Weight == expected.Weight
++				&& AreEqual(actual.Parent, expected.Parent);
+ 		}
+ 	}
+ 
+@@ -81,4 +80,4 @@ public Person(string name, int age, int height, int weight, Person parent)
+ 			Parent = parent;
+ 		}
+ 	}
+-}
++}
+\ No newline at end of file
+diff --git a/HomeExercises/packages.config b/HomeExercises/packages.config
+index d903cca..20cf14e 100644
+--- a/HomeExercises/packages.config
++++ b/HomeExercises/packages.config
+@@ -1,6 +1,7 @@
+ ﻿<?xml version="1.0" encoding="utf-8"?>
++
+ <packages>
+-  <package id="FluentAssertions" version="4.19.4" targetFramework="net45" />
+-  <package id="JetBrains.Annotations" version="10.2.1" targetFramework="net45" />
+-  <package id="NUnit" version="3.5.0" targetFramework="net45" />
++	<package id="FluentAssertions" version="4.19.4" targetFramework="net45" />
++	<package id="JetBrains.Annotations" version="10.2.1" targetFramework="net45" />
++	<package id="NUnit" version="3.5.0" targetFramework="net45" />
+ </packages>
+\ No newline at end of file
+diff --git a/testing.sln.DotSettings b/testing.sln.DotSettings
+index 631637a..f758c41 100644
+--- a/testing.sln.DotSettings
++++ b/testing.sln.DotSettings
+@@ -1,3 +1,13 @@
+ ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
++	<s:String x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/INDENT_STYLE/@EntryValue">Tab</s:String>
++	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CSharpFormat/USE_INDENT_FROM_VS/@EntryValue">False</s:Boolean>
++	<s:String x:Key="/Default/CodeStyle/CodeFormatting/CssFormatter/INDENT_STYLE/@EntryValue">Tab</s:String>
++	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/CssFormatter/USE_INDENT_FROM_VS/@EntryValue">False</s:Boolean>
++	<s:String x:Key="/Default/CodeStyle/CodeFormatting/HtmlFormatter/INDENT_STYLE/@EntryValue">Tab</s:String>
++	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/HtmlFormatter/USE_INDENT_FROM_VS/@EntryValue">False</s:Boolean>
++	<s:String x:Key="/Default/CodeStyle/CodeFormatting/JavaScriptCodeFormatting/INDENT_STYLE/@EntryValue">Tab</s:String>
++	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/JavaScriptCodeFormatting/USE_INDENT_FROM_VS/@EntryValue">False</s:Boolean>
++	<s:String x:Key="/Default/CodeStyle/CodeFormatting/XmlFormatter/INDENT_STYLE/@EntryValue">Tab</s:String>
++	<s:Boolean x:Key="/Default/CodeStyle/CodeFormatting/XmlFormatter/USE_INDENT_FROM_VS/@EntryValue">False</s:Boolean>
+ 	<s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/PredefinedNamingRules/=PrivateInstanceFields/@EntryIndexedValue">&lt;Policy Inspect="True" Prefix="" Suffix="" Style="aaBb" /&gt;</s:String>
+ 	<s:String x:Key="/Default/CodeStyle/Naming/CSharpNaming/PredefinedNamingRules/=TypesAndNamespaces/@EntryIndexedValue">&lt;Policy Inspect="True" Prefix="" Suffix="" Style="AaBb_AaBb" /&gt;</s:String></wpf:ResourceDictionary>
+\ No newline at end of file
